@@ -1,4 +1,4 @@
-[[ -z "$PYENV_HOME" ]] && export PYENV_HOME="$HOME/.pyenv"
+FOUND_PYENV=$+commands[pyenv]
 
 _zsh_pyenv_install() {
     echo "Installing pyenv..."
@@ -14,9 +14,9 @@ _zsh_pyenv_load() {
 }
 
 # install pyenv if it isnt already installed
-[[ ! -f "$PYENV_HOME/libexec/pyenv" ]] && _zsh_pyenv_install
+[[ FOUND_PYENV ]] && _zsh_pyenv_install
 
 # load pyenv if it is installed
-if [[ -f "$PYENV_HOME/libexec/pyenv" ]]; then
+if [[ FOUND_PYENV ]]; then
     _zsh_pyenv_load
 fi
