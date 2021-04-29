@@ -14,10 +14,12 @@ _zsh_pyenv_load() {
 }
 
 # install pyenv if it isnt already installed
-[[ ! -d "$PYENV_HOME" ]] && _zsh_pyenv_install
+if ! command -v pyenv &>/dev/null; then
+    _zsh_pyenv_install
+fi
 
 # load pyenv if it is installed
-if [[ -d "$PYENV_HOME" ]]; then
+if command -v pyenv &>/dev/null; then
     _zsh_pyenv_load
 fi
 
