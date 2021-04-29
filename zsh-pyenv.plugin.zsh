@@ -1,6 +1,8 @@
 # export PYENV_HOME if it is not defined
 [[ -z "$PYENV_HOME" ]] && export PYENV_HOME="$HOME/.pyenv"
 
+export PATH="$PYENV_HOME/bin:$PATH"
+
 _zsh_pyenv_install() {
     echo "Installing pyenv..."
     curl https://pyenv.run | bash
@@ -8,7 +10,6 @@ _zsh_pyenv_install() {
 
 
 _zsh_pyenv_load() {
-    export PATH="$PYENV_HOME/bin:$PATH"
     eval "$(pyenv init - zsh)"
     eval "$(pyenv virtualenv-init - zsh)"
 }
